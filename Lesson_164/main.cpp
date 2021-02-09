@@ -24,6 +24,8 @@ int main()
 	ch.getThis()->printType(); // גûחûגאועסÿ Child::getThis(), גמחגנאשאועסÿ Child*, גûחûגאועסÿ Child::printType
 	p->getThis()->printType(); // גûחûגאועסÿ Child::getThis(), גמחגנאשאועסÿ Parent*, גûחûגאועסÿ Parent::printType
 
+	std::cout << "Hello world" << std::endl;
+
 	system("pause");
 	return 0;
 }
