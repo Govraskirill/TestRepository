@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 class Shape
 {
@@ -66,16 +67,51 @@ public:
 	{
 		return out << "Circle(" << m_point << ", radius " << m_circle << ")" << "\n";
 	}
+
+	int getRadius()
+	{
+		return m_circle;
+	}
+
+	//friend int getLargestRadius(const Circle &circle);
 };
+
+int getLargestRadius(std::vector<Shape*> &v)
+{
+
+	int max{ 0 };
+
+	for (auto &element: v)
+	{
+		if (Circle *c = dynamic_cast<Circle*>(element))
+		{
+			if (c->getRadius() > max)
+				max = c->getRadius();
+		}
+	}
+
+	return max;
+}
 
 int main()
 {
-	Circle c(Point(1, 2, 3), 7);
+	/*Circle c(Point(1, 2, 3), 7);
 	std::cout << c << '\n';
 	
 
 	Triangle t(Point(1, 2, 3), Point(4, 5, 6), Point(7, 8, 9));
-	std::cout << t << '\n';
+	std::cout << t << '\n';*/
+
+	std::vector<Shape*> v;
+	v.push_back(new Circle(Point(1, 2, 3), 7));
+	v.push_back(new Triangle(Point(1, 2, 3), Point(4, 5, 6), Point(7, 8, 9)));
+	v.push_back(new Circle(Point(4, 5, 6), 3));
+
+	// Вывод элементов вектора v здесь
+
+	std::cout << "The largest radius is: " << getLargestRadius(v) << '\n'; // реализуйте эту функцию
+
+																		   // Удаление элементов вектора v здесь
 
 	system("pause");
 	return 0;
